@@ -42,3 +42,22 @@ GradNorme = np.sqrt(Gx_norm**2+Gy_norm**2)
 D2 = sp.diags([1,1,-2,1,1],[-len(x)+1,-1,0,1,len(x)-1],(len(x),len(x)))
 D4 = sp.diags([-4,1,1,-4,6,-4,1,1,-4],[-len(x)+1,-len(x)+2,-2,-1,0,1,2,len(x)-2,len(x)-1],(len(x),len(x)))
 
+A = (np.identity(len(x))-(alpha*D2-beta*D4))
+A = np.linalg.inv(A)
+
+# Critère d'arrêt
+
+
+# Mise en oeuvre des contours
+c = np.zeros((len(x),1,2),dtype=int)
+c[:,0,0] = x
+c[:,0,1] = y
+
+c1 = []
+c1.append(c)
+
+image = cv2.drawContours(image=cv2.cvtColor(I, cv2.COLOR_GRAY2BGR),contours=c1, contourIdx=-1, color=(0, 0, 255), thickness=1,lineType=cv2.LINE_AA)
+
+plt.figure()
+plt.imshow(image)
+plt.show()
