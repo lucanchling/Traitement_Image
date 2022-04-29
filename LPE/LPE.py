@@ -111,7 +111,7 @@ for i in range (256):               #On parcourt la FAH
                     ListeX.append(x)
                     ListeY.append(y+1)
 
-            # Pour traiter les pixels non traités dans la FAH
+            # Pour Lisser, si la priorité du voisin est plus faible que celle du pixel courant alors on l'ajoute à la FAH
             m = len(ListeX)
             if( m != 0):
                 for k in range(m):
